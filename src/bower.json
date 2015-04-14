@@ -1,0 +1,23 @@
+{
+  "name": "GretzLab",
+  "private": true,
+  "dependencies": {
+    "angular": "1.3.9",
+    "angular-route": "1.3.9",
+    "bootstrap": "3.3.1",
+    "bootstrap-sass": "3.3.3",
+    "jquery": "2.1.3"
+  },
+  "version": "0.0.0",
+  "authors": [
+    "jgretz <jgretz@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
