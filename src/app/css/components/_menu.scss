@@ -1,0 +1,27 @@
+.menu {
+	position: relative;
+	top: -500px;
+	left: 50px;
+
+	margin-bottom: -500px;
+
+	font-family: $roboto-slab;
+
+	h1 {
+  		font-weight: 500;
+  		font-size: 3.5em;
+	}
+
+	li {
+  		font-weight: 200;
+		font-size: 1.15em;
+	}
+
+	a {
+		color: $white;
+	}
+
+	a:active {
+		text-decoration: none;
+	}
+}
