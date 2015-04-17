@@ -1,0 +1,23 @@
+.footer {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+
+	background-color: #000;
+
+	height: 30px;
+	width: 100%;
+
+	font-family: $roboto-slab;
+	font-weight: 200;
+	font-size: 1.15em;
+	color: $white;
+
+	ul {
+		margin-top: 5px;
+	}
+
+	a {
+		color: $white;
+	}
+}
