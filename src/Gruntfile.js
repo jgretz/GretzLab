@@ -270,6 +270,7 @@ module.exports = function (grunt) {
         gitadd: {
             default: {
                 options: {
+                    cwd: "<%= pub %>",
                     all: true
                 }
             }
@@ -277,13 +278,20 @@ module.exports = function (grunt) {
 
         gitcommit: {
             default: {
-                messsage: "Publish"
+                options: {
+                    cwd: "<%= pub %>",
+                    message: "Publish",
+                    allowEmpty: true
+                }
             }
         },
 
         gitpush: {
             default: {
-                verbose: true
+                options: {
+                    cwd: "<%= pub %>",
+                    verbose: true
+                }
             }
         },
 
