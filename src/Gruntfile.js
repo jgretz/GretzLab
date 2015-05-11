@@ -4,6 +4,7 @@ module.exports = function (grunt) {
 
     gruntConfig = {
         deploy: "release",
+        pub: "../../GretzLabPub",
 
         files: {
             js: {
@@ -152,6 +153,13 @@ module.exports = function (grunt) {
             html: {
                 src: "app/index.html",
                 dest: "<%= deploy %>/index.html"
+            },
+
+            pub: {
+                expand: true,
+                cwd: "release",
+                src: ["**.*", "css/**.*", "fonts/**.*", "img/**.*", "js/**.*"],
+                dest: "<%= pub %>"
             }
         },
 
@@ -219,10 +227,10 @@ module.exports = function (grunt) {
                 tasks: ["uglify:<%= target %>", "hashres:<%= target %>"]
             },
 
-	sass: {
-	  files: ["app/css/**/*.{scss,sass}"],
-	  tasks: ["sass:<%= target %>", "hashres:<%= target %>"]
-	},
+        	sass: {
+        	  files: ["app/css/**/*.{scss,sass}"],
+        	  tasks: ["sass:<%= target %>", "hashres:<%= target %>"]
+        	},
 
             img: {
                 files: "app/img/**/*",
@@ -237,8 +245,8 @@ module.exports = function (grunt) {
 
         concurrent: {
         	default: [
-	   "coffee",
-	   "sass:<%=target%>",
+        	   "coffee",
+        	   "sass:<%=target%>",
                 "copy:fonts",
                 "copy:fonts_bootstrap",
                 "copy:img",
@@ -247,29 +255,47 @@ module.exports = function (grunt) {
         },
 
         clean: {
-            default: ["<%= deploy %>/obj/angular/*", "<%= deploy %>/css/*", "<%= deploy %>/fonts/*", "<%= deploy %>/img/*", "<%= deploy %>/js/*", "<%= deploy %>/index.html"]
+            default: {
+                src: ["<%= deploy %>/obj/angular/*", "<%= deploy %>/css/*", "<%= deploy %>/fonts/*", "<%= deploy %>/img/*", "<%= deploy %>/js/*", "<%= deploy %>/index.html"]
+            },
+            
+            pub: {
+                src: ["<%= pub %>/css","<%= pub %>/fonts","<%= pub %>/img","<%= pub %>/js","<%= pub %>/index.html"],
+                options: {
+                    force: true
+                }
+            }
+        },
+
+        gitadd: {
+            default: {
+                options: {
+                    all: true
+                }
+            }
+        },
+
+        gitcommit: {
+            default: {
+                messsage: "Publish"
+            }
+        },
+
+        gitpush: {
+            default: {
+            }
         },
 
         build: {
             dev: [
-                "clean",
+                "clean:default",
                 "concurrent",
                 "ngconstant:dev",
                 "ngtemplates",
                 "ngAnnotate",
                 "uglify:dev",
-                "hashres:dev"
-            ],
-
-            dist: [
-                "clean",
-                "concurrent",
-                "ngconstant:dist",
-                "ngtemplates",
-                "ngAnnotate",
-                "uglify:dist",
-                "hashres:dist"
-            ],
+                "hashres:dev"                
+            ]
         }
     };
 
@@ -282,19 +308,25 @@ module.exports = function (grunt) {
         grunt.task.run(this.data);
     });
 
-    grunt.registerTask("run", "Build the project and run it in the default browser", function (target) {
-        if (!target) {
-            target = "dev";
-        }
-
-        grunt.config.set("target", target);
+    grunt.registerTask("publish", "Build the project and run it in the default browser", function() {
         return grunt.task.run([
-            "build:" + target,
+            "clean:pub",
+            "copy:pub",
+
+            "gitadd",
+            "gitcommit",
+            "gitpush"
+        ]);
+    });
+
+    grunt.registerTask("run", "Build the project and run it in the default browser", function () {
+        return grunt.task.run([
+            "build:dev",
             "connect",
             "open:default",
             "watch"
         ]);
     });
 
-    grunt.registerTask("default", ["run:dev"]);
+    grunt.registerTask("default", ["run"]);
 }
