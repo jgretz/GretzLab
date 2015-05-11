@@ -283,6 +283,7 @@ module.exports = function (grunt) {
 
         gitpush: {
             default: {
+                verbose: true
             }
         },
 
