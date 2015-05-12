@@ -129,6 +129,13 @@ module.exports = function (grunt) {
         },
 
         copy: {
+            data: {
+                expand: true,
+                cwd: "app/data",
+                src: "**/*",
+                dest: "<%= deploy %>/data"
+            },
+
             img: {
                 expand: true,
                 cwd: "app/img",
@@ -158,7 +165,7 @@ module.exports = function (grunt) {
             pub: {
                 expand: true,
                 cwd: "release",
-                src: ["**.*", "css/**.*", "fonts/**.*", "img/**.*", "js/**.*"],
+                src: ["**.*", "css/**.*", "fonts/**.*", "img/**.*", "js/**.*", "data/**.*"],
                 dest: "<%= pub %>"
             }
         },
@@ -245,8 +252,9 @@ module.exports = function (grunt) {
 
         concurrent: {
         	default: [
-        	   "coffee",
-        	   "sass:<%=target%>",
+                "coffee",
+                "sass:<%=target%>",
+                "copy:data",
                 "copy:fonts",
                 "copy:fonts_bootstrap",
                 "copy:img",
@@ -256,11 +264,26 @@ module.exports = function (grunt) {
 
         clean: {
             default: {
-                src: ["<%= deploy %>/obj/angular/*", "<%= deploy %>/css/*", "<%= deploy %>/fonts/*", "<%= deploy %>/img/*", "<%= deploy %>/js/*", "<%= deploy %>/index.html"]
+                src: [
+                    "<%= deploy %>/obj/angular/*",
+                    "<%= deploy %>/css/*", 
+                    "<%= deploy %>/fonts/*", 
+                    "<%= deploy %>/img/*",
+                    "<%= deploy %>/js/*",
+                    "<%= deploy %>/data/*",
+                    "<%= deploy %>/index.html"
+                ]
             },
             
             pub: {
-                src: ["<%= pub %>/css","<%= pub %>/fonts","<%= pub %>/img","<%= pub %>/js","<%= pub %>/index.html"],
+                src: [
+                    "<%= pub %>/css",
+                    "<%= pub %>/fonts",
+                    "<%= pub %>/img",
+                    "<%= pub %>/js",
+                    "<%= pub %>/data",
+                    "<%= pub %>/index.html"
+                ],
                 options: {
                     force: true
                 }
