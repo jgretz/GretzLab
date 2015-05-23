@@ -16,6 +16,8 @@ module.exports = function (grunt) {
                     "bower_components/bootstrap/assets/javascripts/bootstrap-sprockets.js",
                     "bower_components/bootstrap/assets/javascripts/bootstrap.js",
 
+                    "bower_components/humanize-plus/public/src/humanize.js",
+
                     "../lib/linq.js"
                 ]
             }
