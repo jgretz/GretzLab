@@ -14,7 +14,9 @@ module.exports = function (grunt) {
                     "bower_components/angular-route/angular-route.js",
 
                     "bower_components/bootstrap/assets/javascripts/bootstrap-sprockets.js",
-                    "bower_components/bootstrap/assets/javascripts/bootstrap.js"
+                    "bower_components/bootstrap/assets/javascripts/bootstrap.js",
+
+                    "../lib/linq.js"
                 ]
             }
         },

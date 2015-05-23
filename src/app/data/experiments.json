@@ -5,7 +5,7 @@
 			"sort": 1,
 			"type": "tech",
 			"title": "Gretz Lab",
-			"directive": "gretzlab"
+			"tag": "gretzlab"
 		}
 	],
 	"shelf": [
@@ -14,7 +14,7 @@
 			"sort": 1,
 			"type": "talk",
 			"title": "Objective C Can Do What?!??!",
-			"directive": "objective_c_can_do_what"
+			"tag": "objective_c_can_do_what"
 		}
 	]
 }

@@ -1,12 +1,8 @@
 class ExperimentListController extends BaseController
-	@inject 'experimentService'
+	@inject 'experimentService', 'renderListService'
 
-	link: (scope, elemnent, attrs) ->
-		scope.experiments = []
-
-		@experimentService.experimentsBySource(attrs.source).then (experiments) ->
-			scope.experiments = experiments
-
-			console.log experiments
+	link: (scope, element, attrs) ->
+		@experimentService.experimentsBySource(attrs.source).then (experiments) =>
+			@renderListService.renderIn(experiments, element, scope)
 
 window.app.registerElementDirective 'experimentList', ExperimentListController, 'misc/experiment_list.html'
