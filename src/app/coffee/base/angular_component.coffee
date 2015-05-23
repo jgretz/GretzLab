@@ -2,9 +2,10 @@ class @AngularComponent
     @register: (name, type) ->
         name ?= @name || @toString().match(/function\s*(.*?)\(/)?[1]
         window.app[type]? name, @
-
-    #default dependencies in case @inject is never called from the child
+    
     @inject: (args...) ->
+        args.push @$inject... if @$inject
+        
         @$inject = args
 
     constructor: (args...)->
@@ -18,3 +19,13 @@ class @AngularComponent
             continue unless typeof fn is 'function'
             continue if key in ['constructor', 'initialize'] or key[0] is '_'
             @[key] = fn.bind?(@)
+
+    promise: (logic) =>
+        response = @$q.defer()
+
+        logic(response)
+
+        response.promise
+
+    # inject promises because we want it to available to pretty much every object
+    @inject('$q')

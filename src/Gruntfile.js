@@ -239,6 +239,11 @@ module.exports = function (grunt) {
         	  tasks: ["sass:<%= target %>", "hashres:<%= target %>"]
         	},
 
+            data: {
+                files: "app/data/**.*",
+                tasks: "copy:data"
+            },
+
             img: {
                 files: "app/img/**/*",
                 tasks: "copy:img"
