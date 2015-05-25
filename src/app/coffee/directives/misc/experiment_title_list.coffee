@@ -5,7 +5,7 @@ class ExperimentTitleListController extends BaseController
 		scope.items = []
 
 		@experimentService.experimentsBySource(attrs.source).then (experiments) =>
-			groups = Enumerable.From(experiments).GroupBy((x)=>x.type).OrderBy((x)=>x.sort).ToArray()
+			groups = Enumerable.From(experiments).GroupBy((x)=>x.category).ToArray()
 
 			items = []
 			for group in groups
@@ -14,7 +14,7 @@ class ExperimentTitleListController extends BaseController
 					count: group.Count()
 					title: Humanize.pluralize(2, Humanize.titleCase(group.Key()))
 
-				for exp in group.source
+				for exp in Enumerable.From(group.source).OrderBy((x)=>x.sort).ToArray()
 					items.push
 						type: 1
 						title: exp.title

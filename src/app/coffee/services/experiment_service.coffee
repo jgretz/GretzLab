@@ -4,7 +4,4 @@ class ExperimentService extends AngularService
 
 	experimentsBySource: (source) ->
 		@promise (deferred) =>
-			@httpService.get('/data/experiments.json').then (experiments) ->
-				deferred.resolve(experiments[source])
-			.catch (error) ->
-				deferred.reject(error)
+			deferred.resolve(window.app.experiments[source])

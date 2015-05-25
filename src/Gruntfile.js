@@ -133,13 +133,6 @@ module.exports = function (grunt) {
         },
 
         copy: {
-            data: {
-                expand: true,
-                cwd: "app/data",
-                src: "**/*",
-                dest: "<%= deploy %>/data"
-            },
-
             img: {
                 expand: true,
                 cwd: "app/img",
@@ -169,7 +162,7 @@ module.exports = function (grunt) {
             pub: {
                 expand: true,
                 cwd: "release",
-                src: ["**.*", "css/**.*", "fonts/**.*", "img/**.*", "js/**.*", "data/**.*"],
+                src: ["**.*", "css/**.*", "fonts/**.*", "img/**.*", "js/**.*"],
                 dest: "<%= pub %>"
             }
         },
@@ -243,11 +236,6 @@ module.exports = function (grunt) {
         	  tasks: ["sass:<%= target %>", "hashres:<%= target %>"]
         	},
 
-            data: {
-                files: "app/data/**.*",
-                tasks: "copy:data"
-            },
-
             img: {
                 files: "app/img/**/*",
                 tasks: "copy:img"
@@ -263,7 +251,6 @@ module.exports = function (grunt) {
         	default: [
                 "coffee",
                 "sass:<%=target%>",
-                "copy:data",
                 "copy:fonts",
                 "copy:fonts_bootstrap",
                 "copy:img",
@@ -279,7 +266,6 @@ module.exports = function (grunt) {
                     "<%= deploy %>/fonts/*", 
                     "<%= deploy %>/img/*",
                     "<%= deploy %>/js/*",
-                    "<%= deploy %>/data/*",
                     "<%= deploy %>/index.html"
                 ]
             },
@@ -290,7 +276,6 @@ module.exports = function (grunt) {
                     "<%= pub %>/fonts",
                     "<%= pub %>/img",
                     "<%= pub %>/js",
-                    "<%= pub %>/data",
                     "<%= pub %>/index.html"
                 ],
                 options: {
