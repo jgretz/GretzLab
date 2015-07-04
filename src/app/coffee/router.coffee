@@ -8,9 +8,9 @@ angular.module("app").config ($routeProvider, $locationProvider) ->
         controller: "HomeController"
         templateUrl: "app/templates/main/home.html"
 
-    $routeProvider.when "/experiments",
-        controller: "ExperimentsController"
-        templateUrl: "app/templates/main/experiments.html"
+    $routeProvider.when "/lab",
+        controller: "LabController"
+        templateUrl: "app/templates/main/lab.html"
 
     $routeProvider.when "/about",
         controller: "AboutController"
