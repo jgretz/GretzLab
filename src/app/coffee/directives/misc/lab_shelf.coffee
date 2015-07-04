@@ -1,4 +1,4 @@
-class LabTitleListController extends BaseController
+class LabShelfController extends BaseController
 	@inject 'labService', 'renderListService'
 
 	link: (scope, element, attrs) ->
@@ -21,4 +21,4 @@ class LabTitleListController extends BaseController
 
 			scope.items = items
 
-window.app.registerElementDirective 'labTitleList', LabTitleListController, 'misc/lab_title_list.html'
+window.app.registerElementDirective 'labShelf', LabShelfController, 'misc/lab_shelf.html'
