@@ -1,2 +1,2 @@
 class GretzLab extends LabItem
-	@registerItem 1, 'bench', 'code', 2, 'GretzLab', 'gretzlab'
+	@registerItem 4, 'bench', 'project', 2, 'GretzLab', 'gretzlab'

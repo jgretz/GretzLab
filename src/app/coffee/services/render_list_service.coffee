@@ -4,7 +4,10 @@ class RenderListService extends AngularService
 
 	renderIn: (list, element, scope) ->
 		for item in Enumerable.From(list).OrderBy((x) => x.sort).ToArray()
-				tag = '<' + item.tag + '></' + item.tag + '>'
-				resolved = @$compile(tag)(scope)
+			newScope = scope.$new(true)
+			newScope.info = Humanize.titleCase(item.category)
 
-				element.append(resolved)
+			tag = '<' + item.tag + '></' + item.tag + '>'
+			resolved = @$compile(tag)(newScope)
+
+			element.append(resolved)
