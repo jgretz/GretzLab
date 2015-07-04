@@ -1,16 +1,11 @@
 .footer {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-
-	background-color: #000;
-
-	margin-top: 10px;
-	height: 30px;
+	height: $footer-height;
 
 	font-family: $roboto-slab;
 	font-weight: 200;
 	font-size: 1.15em;
+
+	background-color: #000;
 	color: $white;
 
 	ul {
