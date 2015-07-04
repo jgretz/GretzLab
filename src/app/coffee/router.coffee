@@ -12,6 +12,10 @@ angular.module("app").config ($routeProvider, $locationProvider) ->
         controller: "LabController"
         templateUrl: "app/templates/main/lab.html"
 
+    $routeProvider.when "/blog",
+        controller: "BlogController"
+        templateUrl: "app/templates/main/blog.html"
+
     $routeProvider.when "/about",
         controller: "AboutController"
         templateUrl: "app/templates/main/about.html"
