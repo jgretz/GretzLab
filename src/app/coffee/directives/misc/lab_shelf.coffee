@@ -5,16 +5,21 @@ class LabShelfController extends BaseController
 		scope.items = []
 
 		@labService.itemsBySource(attrs.source).then (rawItems) =>
-			groups = Enumerable.From(rawItems).GroupBy((x)=>x.category).ToArray()
-
+			groups = rawItems.groupBy("category")
 			items = []
-			for group in groups
+
+			for key in groups
+				group = groups[key].sort('sort')
+
+				console.log key
+				console.log group
+
 				items.push
 					type: 0
-					count: group.Count()
-					title: Humanize.pluralize(2, Humanize.titleCase(group.Key()))
+					count: group.length
+					title: Humanize.pluralize(2, Humanize.titleCase(key))
 
-				for exp in Enumerable.From(group.source).OrderBy((x)=>x.sort).ToArray()
+				for exp in group
 					items.push
 						type: 1
 						title: exp.title

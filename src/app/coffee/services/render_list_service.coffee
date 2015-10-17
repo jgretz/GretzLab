@@ -3,7 +3,9 @@ class RenderListService extends AngularService
 	@inject '$compile'
 
 	renderIn: (list, element, scope) ->
-		for item in Enumerable.From(list).OrderBy((x) => x.sort).ToArray()
+		sorted = list.sortBy('sort')
+
+		for item in sorted
 			newScope = scope.$new(true)
 			newScope.info = Humanize.titleCase(item.category)
 

@@ -10,7 +10,7 @@ Humanize Plus is available via node package manager.
 
 Or download the [minified version][min] or the [full version][max].
 
-[min]: https://raw.github.com/HubSpot/humanize/master/public/dist/humanize.min.js
+[min]: https://raw.github.com/HubSpot/humanize/master/public/src/humanize.min.js
 [max]: https://raw.github.com/HubSpot/humanize/master/public/src/humanize.js
 
 In your web page:
@@ -26,7 +26,7 @@ var capitalized = Humanize.capitalize("ten tiny ducklings.")
 In your node package.json:
 ```javascript
 "dependencies": {
-  "humanize-plus": "1.5.x"
+  "humanize-plus": "1.4.x"
 }
 ```
 
@@ -69,11 +69,11 @@ Humanize.intword(123456789, 'this is a nop', 3)
 // "123.457M"
 
 Humanize.intword(10, 'still a nop', 1)
-// "10"
+// "10.0"
 ```
 
 ##### compactInteger
-Converts an integer into its most compact representation. Decimal precision is ignored for all integers, n, such that abs(n) < 1000.
+Converts an integer into its most compact representation.
 
 ```javascript
 Humanize.compactInteger(123456789, 1)
@@ -84,7 +84,7 @@ Humanize.compactInteger(-7832186132456328967, 4)
 // "-7.8322x10^18"
 
 Humanize.compactInteger(-100, 2)
-// "-100"
+// "-100.00"
 ```
 
 ##### boundedNumber
@@ -264,7 +264,7 @@ Humanize.oxford(items, 3)
 
 // Pluralizes properly too!
 Humanize.oxford(items, 4)
-// "apple, orange, banana, pear, and 1 other"
+// "apple, orange, banana, and 1 other"
 
 Humanize.oxford(items, 3, "and some other fruits")
 // "apple, orange, banana, and some other fruits"
@@ -296,7 +296,7 @@ Fixes binary rounding issues (eg. (0.615).toFixed(2) === "0.61").
 
 ```javascript
 Humanize.toFixed(0.615, 2)
-// "0.62"
+// "0.61"
 ```
 
 ##### normalizePrecision
@@ -339,11 +339,6 @@ Note that the `phantomjs` executable needs to be in the system `PATH` for grunt 
 * [How do I change the PATH variable in Linux](https://www.google.com/search?q=How+do+I+change+the+PATH+variable+in+Linux)
 
 ## Release Notes
-
-### 1.5.0
-
-- fix [#52](https://github.com/HubSpot/humanize/issues/52)
-- remove support for node 0.6.x
 
 ### 1.4.2
 

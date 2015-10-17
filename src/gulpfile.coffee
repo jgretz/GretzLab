@@ -12,6 +12,7 @@ ngTemplates = require 'gulp-ng-templates'
 ngAnnotate = require 'gulp-ng-annotate'
 connect = require 'gulp-connect'
 open = require 'gulp-open'
+livereload = require 'gulp-livereload'
 
 ############### Constants ##################
 
@@ -20,9 +21,12 @@ dest = 'release'
 templateSrc = 'app/templates/**/*.html'
 coffeeSrc = 'app/coffee/**/*.coffee'
 vendorSrc = [
+	"../lib/sugar.min.js",
+
 	"bower_components/jquery/dist/jquery.js",
     "bower_components/angular/angular.js",
     "bower_components/angular-route/angular-route.js",
+    "bower_components/angular-linq/angular-linq.js",
 
     "bower_components/bootstrap/assets/javascripts/bootstrap-sprockets.js",
     "bower_components/bootstrap/assets/javascripts/bootstrap.js",
@@ -32,6 +36,7 @@ vendorSrc = [
 sassSrc = "app/css/style.scss"
 imgSrc = "app/img/**/*.*"
 indexSrc = "app/index.html"
+sassWatchSrc = "app/css/**/*.scss"
 
 ############### Default / Root Level ##################
 
@@ -40,7 +45,7 @@ gulp.task 'default', ->
 
 gulp.task 'build', [ 'scripts', 'sass', 'copy' ], ->
 
-gulp.task 'display', ['connect', 'watch'], ->
+gulp.task 'display', [ 'connect', 'watch' ], ->
 
 ############### Clean ##################
 
@@ -53,11 +58,11 @@ gulp.task 'clean', ->
 gulp.task 'copy', ->
 	gulp.src imgSrc
 		.pipe gulp.dest("#{dest}/img")
-		.pipe connect.reload()
+		.pipe livereload()
 
 	gulp.src indexSrc
 		.pipe gulp.dest(dest)
-		.pipe connect.reload()
+		.pipe livereload()
 
 ############### Scripts ##################
 
@@ -86,6 +91,8 @@ gulp.task 'scripts', ->
 
 	streamqueue {objectMode: true}, vendorJs, coffeeJs, templateJs
 		.pipe order [
+			'**/sugar.min.js',
+			
 			'**/jquery.js',
 			'**/angular.js',
 			'**/angular-route.js',
@@ -104,7 +111,7 @@ gulp.task 'scripts', ->
 		.pipe ngAnnotate()
 		# .pipe uglify()
 		.pipe gulp.dest("#{dest}/js")
-		.pipe connect.reload()
+		.pipe livereload()
 
 ############### Sass ##################
 
@@ -112,14 +119,13 @@ gulp.task 'sass', ->
 	gulp.src sassSrc
 		.pipe sass({outputStyle: 'compressed'})
 		.pipe gulp.dest("#{dest}/css")
-		.pipe connect.reload()
+		.pipe livereload()
 
 ############### Connect ##################
 gulp.task 'connect', ->
 	connect.server
 		port: 8000
 		root: dest
-		livereload: true
 	
 	gulp.src('')
 		.pipe open
@@ -128,6 +134,10 @@ gulp.task 'connect', ->
 ############### Watch ##################
 
 gulp.task 'watch', ->
-	gulp.watch [coffeeSrc], ['scripts']
-	gulp.watch [sassSrc], ['sass']
-	gulp.watch [imgSrc,indexSrc], ['copy']
+	livereload.listen()
+	
+	gulp.watch coffeeSrc, ['scripts']
+	gulp.watch sassWatchSrc, ['sass']
+	gulp.watch imgSrc, ['copy']
+	gulp.watch indexSrc, ['copy']
+
