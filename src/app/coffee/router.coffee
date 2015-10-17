@@ -1,4 +1,4 @@
-angular.module("app").config ($routeProvider, $locationProvider) ->
+angular.module("app.lab").config ($routeProvider, $locationProvider) ->
     $locationProvider
         .html5Mode(true)
         .hashPrefix("!")

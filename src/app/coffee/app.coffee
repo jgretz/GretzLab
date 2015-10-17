@@ -1,7 +1,7 @@
-window.app = angular.module("app", ["config", "ngRoute"])
+window.app = angular.module("app.lab", ["ngRoute"])
 
 window.app.registerElementDirective = (name, controller, templatePath, scope) ->
-	angular.module('app').directive name, ->
+	angular.module('app.lab').directive name, ->
 	    restrict: 'E'
 	    replace: true
 	    controller: controller
