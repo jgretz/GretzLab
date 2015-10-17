@@ -10,6 +10,7 @@ sass = require 'gulp-sass'
 htmlmin = require 'gulp-htmlmin'
 ngTemplates = require 'gulp-ng-templates'
 ngAnnotate = require 'gulp-ng-annotate'
+imageOp = require 'gulp-image-optimization'
 connect = require 'gulp-connect'
 open = require 'gulp-open'
 livereload = require 'gulp-livereload'
@@ -59,6 +60,10 @@ gulp.task 'clean', ->
 
 gulp.task 'copy', ->
 	gulp.src imgSrc
+		.pipe imageOp
+			optimizationLevel: 5
+			progressive: true
+			interlaced: true
 		.pipe gulp.dest("#{dest}/img")
 		.pipe livereload()
 
@@ -128,6 +133,9 @@ gulp.task 'connect', ->
 	connect.server
 		port: 8000
 		root: dest
+		middleware: (connect, options) -> 
+			optBase = if typeof options.root == 'string' then [ options.root ] else options.root
+			[ require('connect-modrewrite')([ '!(\\..+)$ / [L]' ]) ].concat optBase.map((path) -> connect.static path)
 	
 	gulp.src('')
 		.pipe open
