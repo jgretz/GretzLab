@@ -4,6 +4,22 @@ html, body {
 	height: 100%;
 	padding: 0;
 	margin: 0;
+
+	a {
+		color: $dash;
+	}
+
+	a:active {
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: $dash;
+	}
+
+	h1 {
+		color: $dash;
+	}
 }
 
 .wrap {

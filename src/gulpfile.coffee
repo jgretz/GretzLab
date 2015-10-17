@@ -36,7 +36,9 @@ vendorSrc = [
 sassSrc = "app/css/style.scss"
 imgSrc = "app/img/**/*.*"
 indexSrc = "app/index.html"
+
 sassWatchSrc = "app/css/**/*.scss"
+templateWatchSrc = "app/templates/**/*.html"
 
 ############### Default / Root Level ##################
 
@@ -137,6 +139,7 @@ gulp.task 'watch', ->
 	livereload.listen()
 	
 	gulp.watch coffeeSrc, ['scripts']
+	gulp.watch templateWatchSrc, ['scripts']
 	gulp.watch sassWatchSrc, ['sass']
 	gulp.watch imgSrc, ['copy']
 	gulp.watch indexSrc, ['copy']
