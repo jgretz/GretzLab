@@ -104,6 +104,7 @@ gulp.task 'scripts', ->
 			'**/sugar.min.js',
 			'**/jquery.js',
 			'**/flowtype.js',
+			'**/angular.js',
 			'**/angular*.js',
 			'**/bootstrap*.js',
 			'**/humanize.js'
