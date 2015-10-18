@@ -15,7 +15,8 @@ connect = require 'gulp-connect'
 open = require 'gulp-open'
 livereload = require 'gulp-livereload'
 ignore = require 'gulp-ignore'
-git = require 'gulp-git'
+shell = require 'gulp-shell'
+gutil = require 'gulp-util'
 
 ############### Constants ##################
 
@@ -171,8 +172,11 @@ gulp.task 'deploy-copy', ->
 		.pipe gulp.dest(releaseDir)
 
 gulp.task 'deploy-git', ->
-	gulp.src(releaseDir, { cwd: releaseDir })
-		.pipe git.add({ args: '-A' })
-		.pipe git.commit('update', {args: '--allow-empty'})
-		# .pipe git.push('origin', 'master', {cwd: releaseDir})
+	process.chdir(releaseDir);
+	gulp.src('./')
+		.pipe shell [
+			'git add -A'
+			'git commit --allow-empty -m "update"'
+			'git push'
+		]
 
