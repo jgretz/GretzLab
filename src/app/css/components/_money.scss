@@ -8,10 +8,6 @@
 	background-size: cover;
 }
 
-.lightbulbs {
-	background-image: url('../img/money-lights.jpg');
-}
-
 .watermark {
 	background-color: rgba(0, 0, 0, .6);
 	color: $white;
@@ -30,4 +26,24 @@
 	position: relative;
 	top: 40px;
 	left: 40px;
+}
+
+.money.home {
+	background-image: url('../img/money-lights.jpg');
+}
+
+.money.kitchen {
+	background-image: url('../img/money-kitchen.jpg');
+}
+
+.money.lab {
+	background-image: url('../img/money-lab.jpg');
+}
+
+.money.blog {
+	background-image: url('../img/money-blog.jpg');
+}
+
+.money.talks {
+	background-image: url('../img/money-talks.jpg');
 }
