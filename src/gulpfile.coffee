@@ -14,6 +14,8 @@ imageOp = require 'gulp-image-optimization'
 connect = require 'gulp-connect'
 open = require 'gulp-open'
 livereload = require 'gulp-livereload'
+ignore = require 'gulp-ignore'
+git = require 'gulp-git'
 
 ############### Constants ##################
 
@@ -44,6 +46,8 @@ indexSrc = "app/index.html"
 sassWatchSrc = "app/css/**/*.scss"
 templateWatchSrc = "app/templates/**/*.html"
 
+releaseDir = "../../GretzLabPub/"
+
 ############### Default / Root Level ##################
 
 gulp.task 'default', ->
@@ -52,6 +56,9 @@ gulp.task 'default', ->
 gulp.task 'build', [ 'scripts', 'sass', 'copy' ], ->
 
 gulp.task 'display', [ 'connect', 'watch' ], ->
+
+gulp.task 'deploy', ->
+	runSequence 'deploy-clean', 'deploy-copy', 'deploy-git'
 
 ############### Clean ##################
 
@@ -143,7 +150,6 @@ gulp.task 'connect', ->
 			uri: 'http://localhost:8000'
 
 ############### Watch ##################
-
 gulp.task 'watch', ->
 	livereload.listen()
 	
@@ -152,4 +158,21 @@ gulp.task 'watch', ->
 	gulp.watch sassWatchSrc, ['sass']
 	gulp.watch imgSrc, ['copy']
 	gulp.watch indexSrc, ['copy']
+
+############### Deploy ##################
+gulp.task 'deploy-clean', ->
+	gulp.src(releaseDir + '**/*.*')
+		.pipe ignore.exclude('*.md')
+		.pipe ignore.exclude('.git')
+		.pipe clean({ force: true })
+
+gulp.task 'deploy-copy', ->
+	gulp.src(dest + '/**/*.*')
+		.pipe gulp.dest(releaseDir)
+
+gulp.task 'deploy-git', ->
+	gulp.src(releaseDir, { cwd: releaseDir })
+		.pipe git.add({ args: '-A' })
+		.pipe git.commit('update')
+		# .pipe git.push('origin', 'master')
 
