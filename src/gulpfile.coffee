@@ -173,6 +173,7 @@ gulp.task 'deploy-copy', ->
 
 gulp.task 'deploy-git', ->
 	process.chdir(releaseDir);
+	
 	gulp.src('./')
 		.pipe shell [
 			'git add -A'
