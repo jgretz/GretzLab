@@ -25,9 +25,12 @@ vendorSrc = [
 	"../lib/sugar.min.js",
 
 	"bower_components/jquery/dist/jquery.js",
+	"bower_components/Flowtype.js/flowtype.js",
+
     "bower_components/angular/angular.js",
     "bower_components/angular-route/angular-route.js",
     "bower_components/angular-linq/angular-linq.js",
+    "bower_components/angular-flowtype/angular-flowtype.js",
 
     "bower_components/bootstrap/assets/javascripts/bootstrap-sprockets.js",
     "bower_components/bootstrap/assets/javascripts/bootstrap.js",
@@ -99,10 +102,9 @@ gulp.task 'scripts', ->
 	streamqueue {objectMode: true}, vendorJs, coffeeJs, templateJs
 		.pipe order [
 			'**/sugar.min.js',
-			
 			'**/jquery.js',
-			'**/angular.js',
-			'**/angular-route.js',
+			'**/flowtype.js',
+			'**/angular*.js',
 			'**/bootstrap*.js',
 			'**/humanize.js'
 
@@ -115,7 +117,6 @@ gulp.task 'scripts', ->
 			'**/*.js'
 		]
 		.pipe concat('app.js')
-		# .pipe uglify()
 		.pipe gulp.dest("#{dest}/js")
 		.pipe livereload()
 

@@ -12,16 +12,15 @@
 	background-color: rgba(0, 0, 0, .6);
 	color: $white;
 
-	font-size: 1.9em;
+	font-size: 1.7em;
 	font-weight: 100;
-	letter-spacing: 1px;
 
 	border-radius: 90%;
 	text-align: center;
 
 	width: 120px;
 	height: 120px;
-	padding-top: 25px;
+	padding-top: 16px;
 
 	position: relative;
 	top: 40px;
@@ -29,7 +28,7 @@
 }
 
 .money.home {
-	background-image: url('../img/money-lights.jpg');
+	background-image: url('../img/money-home.jpg');
 }
 
 .money.kitchen {

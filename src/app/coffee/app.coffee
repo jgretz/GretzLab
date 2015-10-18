@@ -1,4 +1,4 @@
-window.app = angular.module("app.lab", ["ngRoute"])
+window.app = angular.module("app.lab", ["ngRoute", "ngFlowtype"])
 
 window.app.registerElementDirective = (name, controller, templatePath, scope) ->
 	angular.module('app.lab').directive name, ->
