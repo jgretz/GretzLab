@@ -1,2 +1,2 @@
 class TimeIsTryingToKillYou extends ContentItem
-	@registerItem 10, 'bench', 'talk', 1, 'Time Is Trying To Kill You', 'timeistryingtokillyou'
+	@registerItem 'talks', 1, 'Time Is Trying To Kill You', 'timeistryingtokillyou'
