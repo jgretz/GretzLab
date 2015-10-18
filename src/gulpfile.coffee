@@ -173,6 +173,6 @@ gulp.task 'deploy-copy', ->
 gulp.task 'deploy-git', ->
 	gulp.src(releaseDir, { cwd: releaseDir })
 		.pipe git.add({ args: '-A' })
-		.pipe git.commit('update')
+		.pipe git.commit('update', { args: '-e' })
 		.pipe git.push('origin', 'master', {cwd: releaseDir})
 
