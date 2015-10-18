@@ -3,11 +3,11 @@ class RenderListService extends AngularService
 	@inject '$compile'
 
 	renderIn: (list, element, scope) ->
-		sorted = list.sortBy('sort')
+		sorted = list.sort('sort')
 
 		for item in sorted
 			newScope = scope.$new(true)
-			newScope.info = Humanize.titleCase(item.category)
+			newScope.item = item
 
 			tag = '<' + item.tag + '></' + item.tag + '>'
 			resolved = @$compile(tag)(newScope)

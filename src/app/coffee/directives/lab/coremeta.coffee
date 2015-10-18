@@ -1,2 +1,2 @@
-class CoreMeta extends LabItem
-	@registerItem 3, 'shelf', 'project', 1, 'CoreMeta', 'coremeta'
+class CoreMeta extends ContentItem
+	@registerItem 'lab', 3, 'CoreMeta', 'coremeta'

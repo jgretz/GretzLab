@@ -1,2 +1,2 @@
-class GretzLab extends LabItem
-	@registerItem 4, 'bench', 'project', 2, 'GretzLab', 'gretzlab'
+class GretzLab extends ContentItem
+	@registerItem 'lab', 2, 'Gretz Lab', 'gretzlab'

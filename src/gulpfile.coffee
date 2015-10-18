@@ -115,7 +115,6 @@ gulp.task 'scripts', ->
 			'**/*.js'
 		]
 		.pipe concat('app.js')
-		.pipe ngAnnotate()
 		# .pipe uglify()
 		.pipe gulp.dest("#{dest}/js")
 		.pipe livereload()

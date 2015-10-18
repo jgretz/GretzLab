@@ -1,2 +1,2 @@
-class Cereal extends LabItem
-	@registerItem 2, 'shelf', 'project', 2, 'Cereal', 'cereal'
+class Cereal extends ContentItem
+	@registerItem 'lab', 4, 'Cereal', 'cereal'

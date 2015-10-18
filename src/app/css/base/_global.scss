@@ -7,7 +7,7 @@ html, body {
 
 	background-color: #000;
 
-	a {
+	a, a:hover, a:focus {
 		color: $dash;
 	}
 
@@ -15,17 +15,13 @@ html, body {
 		text-decoration: none;
 	}
 
-	a:hover {
-		color: $dash;
-	}
-
 	h1 {
 		color: $dash;
 	}
 
 	h2 {
-		color: $dash;
-		font-size: 1.9em;
+		font-size: 1.8em;
+		font-weight: 500;
 	}
 }
 
