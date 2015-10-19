@@ -44,3 +44,11 @@ angular.module("app.lab").config ($routeProvider, $locationProvider) ->
     $routeProvider.when "/talks/:item",
         controller: "TalksController"
         templateUrl: "app/templates/main/talks.html"
+
+    # 404
+    $routeProvider.when "/error",
+        controller: "ErrorController"
+        templateUrl: "app/templates/main/404.html"
+
+    $routeProvider.otherwise
+        redirectTo: "error"

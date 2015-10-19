@@ -9,14 +9,14 @@ uglify = require 'gulp-uglify'
 sass = require 'gulp-sass'
 htmlmin = require 'gulp-htmlmin'
 ngTemplates = require 'gulp-ng-templates'
-ngAnnotate = require 'gulp-ng-annotate'
 imageOp = require 'gulp-image-optimization'
+
 connect = require 'gulp-connect'
 open = require 'gulp-open'
 livereload = require 'gulp-livereload'
+
 ignore = require 'gulp-ignore'
 shell = require 'gulp-shell'
-gutil = require 'gulp-util'
 
 ############### Constants ##################
 
@@ -43,6 +43,7 @@ vendorSrc = [
 sassSrc = "app/css/style.scss"
 imgSrc = "app/img/**/*.*"
 indexSrc = "app/index.html"
+sitemapSrc = "app/sitemap.xml"
 
 sassWatchSrc = "app/css/**/*.scss"
 templateWatchSrc = "app/templates/**/*.html"
@@ -79,6 +80,10 @@ gulp.task 'copy', ->
 		.pipe livereload()
 
 	gulp.src indexSrc
+		.pipe gulp.dest(dest)
+		.pipe livereload()
+
+	gulp.src sitemapSrc
 		.pipe gulp.dest(dest)
 		.pipe livereload()
 
@@ -162,18 +167,19 @@ gulp.task 'watch', ->
 
 ############### Deploy ##################
 gulp.task 'deploy-clean', ->
-	gulp.src(releaseDir + '**/*.*')
+	process.chdir(releaseDir);
+
+	gulp.src('./**/*.*')
 		.pipe ignore.exclude('*.md')
 		.pipe ignore.exclude('.git')
+		.pipe ignore.exclude('web.config')
 		.pipe clean({ force: true })
 
 gulp.task 'deploy-copy', ->
-	gulp.src(dest + '/**/*.*')
-		.pipe gulp.dest(releaseDir)
+	gulp.src('../GretzLab/src/release/**/*.*')
+		.pipe gulp.dest('./')
 
 gulp.task 'deploy-git', ->
-	process.chdir(releaseDir);
-	
 	gulp.src('./')
 		.pipe shell [
 			'git add -A'
