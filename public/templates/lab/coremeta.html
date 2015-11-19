@@ -1,27 +1,19 @@
 <div class="content-item">
 	<h1>CoreMeta</h1>
 	<p>
-	CoreMeta is my IOC / DI framework for iOS. With some simple configuration, you get a lot of nice magic that makes plumbing code a thing of the past. In addition, your code will naturally become more <a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)" target="_blank">SOLID</a> and more easily testable.
+	CoreMeta is my IOC / DI framework for iOS written in Swift. With some simple configuration, you get a lot of nice magic that makes plumbing code a thing of the past. In addition, your code will naturally become more <a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)" target="_blank">SOLID</a> and more easily testable.
 	</p>
 	<p>
-	There are some out there who don't believe that objective-c needs an IOC / DI framework. I obviously disagree, and I think this viewpoint comes from my polygot background. Let me rant a little to explain why.
+	There are some out there who don't believe that iOS needs an IOC / DI framework. I obviously disagree, and I think this viewpoint comes from my polygot background. Let me rant a little to explain why.
 	</p>
 	<p>
 	In general, I prefer to write code that is loosely coupled, which leads to a lot of small single objective files. When I first came to objective-c, I was forced to write a lot of code that was just prepping the service object, which in turn, caused the containing class's dependency graph to grow unnecessarily large. If you need an example of this just look at any of apple's example projects - giant app delegates and massive view controllers abound. I just refuse to write code that way. With IOC / DI, code is cleaner, smaller, and more obvious. If you want to see a talk I gave on the subject take a look at <a href="" target="_blank">Objective-C can do WHAT?!?!</a>
 	</p>
 	<p>
-	In addition to IOC / DI, CoreMeta also contains:
-	<ul>
-		<li>An object mapper (similar to .Net's <a href="http://automapper.org/" target="_blank">AutoMapper</a>)</li>
-		<li>A promises framework</li>
-		<li>A bunch of handy categories</li>
-	</ul>
+	In addition to IOC / DI, CoreMeta also contains an object mapper (similar to .Net's <a href="http://automapper.org/" target="_blank">AutoMapper</a>)
 	</p>
 	<p>
-	CoreMeta came out of my work projects at <a href="http://truefit.io" target="_blank">Truefit</a>. Due to this, there are some rough edges such as: lack of tests, no class name prefixing, and a default universal container. Some of these choices were made for reasons, but this warning is here as a mea culpa. I am trying to address many of these known issues in the next version.
-	</p>
-	<p>
-	CoreMeta is currently written in objective-c. It does work with Swift (thanks to Daniel Sadi who wrote this <a href="https://danielsaidi.wordpress.com/2014/09/04/my-approach-to-ioc-in-ios/" target="_blank">blog article</a> on how to implement). I am working on porting it to Swift, and am cleaning up and upgrading along the way.
+	CoreMeta came out of my work projects at <a href="http://truefit.io" target="_blank">Truefit</a>. The first version had some rough edges such as: lack of tests, no class name prefixing, and a default universal container. I addressed as many of these as possible in the Swift rewrite (thanks to Daniel Sadi who wrote this <a href="https://danielsaidi.wordpress.com/2014/09/04/my-approach-to-ioc-in-ios/" target="_blank">blog article</a>)
 	</p>
 	<p>
 	Visit the source here: <a href="https://github.com/jgretz/CoreMeta" target="_blank">GitHub</a> 
