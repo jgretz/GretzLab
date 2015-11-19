@@ -1,0 +1,11 @@
+/bower_components
+/node_modules
+/gulp
+/lib
+/public
+/idea_library
+
+bower.json
+gulpfile.coffee
+nodemon.json
+README.md

@@ -1,0 +1,46 @@
+$footer-height: 30px;
+
+html, body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+
+	background-color: #000;
+
+	font-size: 18px;
+	font-family: $roboto-slab;
+
+	a, a:hover, a:focus {
+		color: $dash;
+	}
+
+	a:active {
+		text-decoration: none;
+	}
+
+	h1 {
+		color: $dash;
+	}
+
+	h2 {
+		font-size: 1.6em;
+		font-weight: 500;
+	}
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+
+    /* Negative indent footer by it's height */
+    margin: 0 auto $footer-height * -1;
+}
+
+.content {
+	background-color: #fff;
+}
+
+.push-down {
+	height: $footer-height;
+}

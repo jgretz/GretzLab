@@ -1,0 +1,32 @@
+.content-list {
+	border-right: $dash solid 1px;
+
+	.title {
+		color: $dash;
+
+		font-size: 1.5em;
+		font-weight: 300;
+
+		padding-top: 10px;
+	}
+
+	.item {
+		margin-top: 10px;
+		padding-right: 10px;
+
+		a {
+			color: #000;			
+		}
+	}
+}
+
+.content-item {
+	padding-top: 20px;
+	padding-left: 20px;
+	min-height: 200px;
+
+	h1 {
+		color: #000;
+		margin-top: 0;
+	}
+}

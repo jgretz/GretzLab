@@ -1,0 +1,48 @@
+.money {
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.watermark {
+	background-color: rgba(0, 0, 0, .6);
+	color: $white;
+
+	font-size: 1.7em;
+	font-weight: 100;
+
+	border-radius: 90%;
+	text-align: center;
+
+	width: 120px;
+	height: 120px;
+	padding-top: 16px;
+
+	position: relative;
+	top: 40px;
+	left: 40px;
+}
+
+.money.home {
+	background-image: url('../img/money-home.jpg');
+}
+
+.money.kitchen {
+	background-image: url('../img/money-kitchen.jpg');
+}
+
+.money.lab {
+	background-image: url('../img/money-lab.jpg');
+}
+
+.money.blog {
+	background-image: url('../img/money-blog.jpg');
+}
+
+.money.talks {
+	background-image: url('../img/money-talks.jpg');
+}

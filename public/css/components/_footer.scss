@@ -1,0 +1,18 @@
+.footer {
+	height: $footer-height;
+
+	font-family: $roboto-slab;
+	font-weight: 200;
+	font-size: 1.15em;
+
+	background-color: #000;
+	color: $white;
+
+	ul {
+		margin-top: 5px;
+	}
+
+	a {
+		color: $white;
+	}
+}
