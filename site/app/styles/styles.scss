@@ -5,24 +5,8 @@ $fa-font-path: '~font-awesome/fonts/';
 @import '~font-awesome/scss/font-awesome';
 
 @import './colors';
+@import './fonts';
 
-html,
-body,
-#app,
-.container,
-.row,
-.col-xs-1,
-.col-xs-2,
-.col-xs-3,
-.col-xs-4,
-.col-xs-5,
-.col-xs-6,
-.col-xs-7,
-.col-xs-8,
-.col-xs-9,
-.col-xs-10,
-.col-xs-11,
-.col-xs-12 {
-  height: 100%;
-  min-height: 100%;
-}
+@import './global';
+
+@import '../features/pages/styles/style';

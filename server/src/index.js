@@ -11,6 +11,7 @@ import nodeBitsSql from 'node-bits-sql';
 import config from './config';
 import adminConfig from './util/admin';
 import connectToDatabase from './util/database';
+import allowGet from './util/allowGet';
 
 nodeBits([
   nodeBitsExpress({
@@ -33,6 +34,7 @@ nodeBits([
         returnData: [
           'email',
         ],
+        allowRequestDespiteJwtFailure: allowGet,
       }),
     ],
   }),

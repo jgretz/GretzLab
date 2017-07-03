@@ -1,5 +1,6 @@
 import React from 'react';
+import {Money} from '../../pages/components';
 
 export default () => (
-  <div>Hello World</div>
+  <Money name="home" />
 );
