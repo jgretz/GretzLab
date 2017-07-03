@@ -4,15 +4,13 @@ import nodeBitsCode from 'node-bits-code';
 import nodeBitsRest from 'node-bits-rest';
 import nodeBitsSpa from 'node-bits-spa';
 import nodeBitsPassword from 'node-bits-password';
-import nodeBitsJwt, {secureByRole} from 'node-bits-jwt';
-import nodeBitsAdmin, {onDevice} from 'node-bits-admin';
+import nodeBitsJwt from 'node-bits-jwt';
+import nodeBitsAdmin, {onImgur} from 'node-bits-admin';
 import nodeBitsSql from 'node-bits-sql';
-import Sequelize from 'sequelize';
 
 import config from './config';
-
-// import authorizeMap from './authorize_role_map';
-// import adminModelConfig from './admin_model_config';
+import adminConfig from './util/admin';
+import connectToDatabase from './util/database';
 
 nodeBits([
   nodeBitsExpress({
@@ -24,39 +22,36 @@ nodeBits([
       fileUpload(),
     ],
     hooks: [
-      // nodeBitsJwt({
-      //   secret: config.JWT_SECRET,
-      //   user: {
-      //     model: 'user',
-      //     key: 'email',
-      //     password: 'password',
-      //   },
-      //   restrict: ['/api'],
-      //   returnData: [
-      //     'email',
-      //     'role',
-      //   ],
-      //   securitySchemes: [
-      //     secureByRole({roleKey: 'role', map: authorizeMap}),
-      //   ],
-      // }),
+      nodeBitsJwt({
+        secret: config.JWT_SECRET,
+        user: {
+          model: 'user',
+          key: 'email',
+          password: 'password',
+        },
+        restrict: ['/api'],
+        returnData: [
+          'email',
+        ],
+      }),
     ],
   }),
   nodeBitsCode({path: __dirname}),
   nodeBitsRest({prefix: 'api'}),
   nodeBitsSql({
-    connection: () => new Sequelize(config.CONNECTION),
+    runSeeds: true,
+    connection: () => connectToDatabase(),
   }),
 
   nodeBitsPassword(),
 
   nodeBitsAdmin({
-    models: {},
+    models: adminConfig,
     security: {
       username: 'email',
     },
-    storage: onDevice({
-      path: `${__dirname}/spa/uploads`,
+    storage: onImgur({
+      clientId: config.IMGUR_CLIENT_ID,
     }),
   }),
 
