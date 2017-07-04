@@ -6,6 +6,7 @@ import Spinner from 'react-spinkit';
 import {loadPages} from './features/pages/actions';
 import {Money} from './features/pages/components';
 import {Menu} from './features/menu/components';
+import {Footer} from './features/shared/components';
 
 import {allPagesSelector} from './features/pages/selectors';
 
@@ -54,6 +55,8 @@ class App extends Component {
         <Menu />
 
         {this.renderChildren(name)}
+
+        <Footer />
       </div>
     );
   }
