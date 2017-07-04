@@ -11,3 +11,7 @@ $fa-font-path: '~font-awesome/fonts/';
 
 @import '../features/pages/styles/style';
 @import '../features/menu/styles/style';
+
+.site {
+  background-color: $white;
+}

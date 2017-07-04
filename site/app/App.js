@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import autobind from 'class-autobind';
+import Spinner from 'react-spinkit';
 
 import {loadPages} from './features/pages/actions';
 import {Money} from './features/pages/components';
 import {Menu} from './features/menu/components';
+
+import {allPagesSelector} from './features/pages/selectors';
 
 class App extends Component {
   constructor(props) {
@@ -31,10 +34,22 @@ class App extends Component {
     return React.Children.map(this.props.children, child => React.cloneElement(child, {name}));
   }
 
+  renderLoading() {
+    return (
+      <Spinner name="double-bounce" />
+    );
+  }
+
   render() {
+    const {pages} = this.props;
+    if (pages.size === 0) {
+      return this.renderLoading();
+    }
+
+    // render page
     const name = this.findName();
     return (
-      <div>
+      <div className="site">
         <Money name={name} />
         <Menu />
 
@@ -44,4 +59,9 @@ class App extends Component {
   }
 }
 
-export default connect(null, {loadPages})(App);
+const mapStateToProps = state =>
+({
+  pages: allPagesSelector(state),
+});
+
+export default connect(mapStateToProps, {loadPages})(App);
