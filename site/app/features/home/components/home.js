@@ -12,8 +12,8 @@ const home = ({page}) => {
 
   return (
     <Row>
-      <Col xs={10} xsOffset={1}>
-        <div dangerouslySetInnerHTML={{__html: page.text}} />
+      <Col xs={12}>
+        <div dangerouslySetInnerHTML={{__html: page.text}} className="content" />
       </Col>
     </Row>
   );

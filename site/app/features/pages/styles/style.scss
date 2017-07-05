@@ -55,8 +55,14 @@
 	}
 
   a:first-of-type {
-    margin: 0 5px 5px 0;
+    margin-right: 5px;
   }
+
+  a:last-of-type {
+    position: relative;
+    top: -2.5px;
+  }
+
 
   a:hover,
   a:focus,
