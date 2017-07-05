@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 export default () => (
   <nav className="menu">
     <ul className="list-unstyled list-inline">
-      <li><Link to="/#">About</Link></li>
+      <li><Link to="/">About</Link></li>
       <li>|</li>
       <li><Link to="/blog">Blog</Link></li>
       <li>|</li>

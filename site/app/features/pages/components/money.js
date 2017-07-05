@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 
 import {pageSelector} from '../selectors';
 
+import Watermark from './watermark';
+import Social from './social';
+
 const money = ({page}) => {
   if (!page) {
     return null;
@@ -11,7 +14,8 @@ const money = ({page}) => {
   const style = {backgroundImage: `url(${page.image.image})`};
   return (
     <div className="money" style={style}>
-      <div className="watermark">Gretz Lab</div>
+      <Watermark />
+      <Social />
     </div>
   );
 };

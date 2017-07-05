@@ -11,7 +11,7 @@
 }
 
 .watermark {
-  background-color: rgba(0, 0, 0, .6);
+  background-color: $see-through-black;
   color: $white;
 
   font-size: 1.7em;
@@ -27,4 +27,42 @@
   position: relative;
   top: 40px;
   left: 40px;
+}
+
+.social {
+  position: absolute;
+  top: 52px;
+  right: 40px;
+
+  width: 105px;
+  text-align: center;
+
+	a {
+		color: $white;
+
+    background-color: $see-through-black;
+	  color: $white;
+
+    font-weight: 200;
+    font-size: 1.25em;
+
+    height: 50px;
+    width: 50px;
+    border-radius: 90%;
+
+    line-height: 50px;
+    text-align: center;
+	}
+
+  a:first-of-type {
+    margin: 0 5px 5px 0;
+  }
+
+  a:hover,
+  a:focus,
+  a:active,
+  a:visited {
+    color: $white;
+    text-decoration: none;
+  }
 }
