@@ -1,10 +1,11 @@
 import React from 'react';
 
-export default ({data, onClick}) => {
+export default ({data, onClick, className}) => {
   const handleClick = item => () => onClick(item);
+  const actualClassName = className || 'content-list';
 
   return (
-    <div className="content-list">
+    <div className={actualClassName}>
       <ul>
         {
         data.map(item => (

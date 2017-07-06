@@ -3094,9 +3094,9 @@ nested-error-stacks@^1.0.0:
   dependencies:
     inherits "~2.0.1"
 
-node-bits-admin@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/node-bits-admin/-/node-bits-admin-0.0.14.tgz#6a398906c6dda4bdadbf95c0a51b0e91c0621ab8"
+node-bits-admin@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/node-bits-admin/-/node-bits-admin-0.0.15.tgz#543c131230026a41fb6b9afe266348629df0136b"
   dependencies:
     imagemin "^5.3.1"
     imagemin-jpegtran "^5.0.2"
@@ -3155,9 +3155,9 @@ node-bits-password@^0.0.8:
     lodash "^4.17.4"
     node-bits "^0.0.29"
 
-node-bits-rest@^0.0.27:
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/node-bits-rest/-/node-bits-rest-0.0.27.tgz#8c4e2d52726e0de847727feabdd99ffc341bd0fe"
+node-bits-rest@^0.0.28:
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/node-bits-rest/-/node-bits-rest-0.0.28.tgz#a83aefb767c75960d87260995e784b20082f794c"
   dependencies:
     lodash "^4.17.4"
     node-bits "^0.0.26"
