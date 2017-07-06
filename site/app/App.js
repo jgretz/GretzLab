@@ -36,7 +36,9 @@ class App extends Component {
 
   renderLoading() {
     return (
-      <Spinner name="double-bounce" />
+      <div className="loading">
+        <Spinner name="double-bounce" />
+      </div>
     );
   }
 

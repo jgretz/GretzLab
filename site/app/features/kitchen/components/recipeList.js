@@ -7,7 +7,7 @@ import {categoriesSelector} from '../selectors';
 
 import {List} from '../../shared/components';
 
-class ProjectList extends Component {
+class RecipeList extends Component {
   constructor(props) {
     super(props);
     autobind(this);
@@ -45,4 +45,4 @@ const mapStateToProps = state =>
   categories: categoriesSelector(state),
 });
 
-export default connect(mapStateToProps, {loadRecipes, setActiveRecipe})(ProjectList);
+export default connect(mapStateToProps, {loadRecipes, setActiveRecipe})(RecipeList);
