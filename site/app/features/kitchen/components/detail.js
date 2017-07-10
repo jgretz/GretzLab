@@ -19,7 +19,7 @@ const detail = ({page, recipe}) => {
   return (
     <div className="content detail">
       <h1>{recipe.title}</h1>
-      <div>Tags: {recipe.tags.map(t => t.name)}</div>
+      <div>Tags: {recipe.tags.map(t => t.name).join(', ')}</div>
       <div dangerouslySetInnerHTML={{__html: recipe.text}} />
     </div>
   );
