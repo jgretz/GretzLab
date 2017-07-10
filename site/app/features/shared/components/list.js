@@ -8,11 +8,11 @@ export default ({data, onClick, className}) => {
     <div className={actualClassName}>
       <ul>
         {
-        data.map(item => (
-          <li key={item.id} onClick={handleClick(item)}>
-            <span>{item.title}</span>
-          </li>
-        ))
+          data.map(item => (
+            <li key={item.id} onClick={handleClick(item)}>
+              <span>{item.title}</span>
+            </li>
+          ))
         }
       </ul>
     </div>

@@ -21,8 +21,8 @@ const money = ({page}) => {
 };
 
 const mapStateToProps = (state, props) =>
-({
-  page: pageSelector(state, props),
-});
+  ({
+    page: pageSelector(state, props),
+  });
 
 export default connect(mapStateToProps)(money);

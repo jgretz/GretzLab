@@ -41,8 +41,8 @@ class RecipeList extends Component {
 }
 
 const mapStateToProps = state =>
-({
-  categories: categoriesSelector(state),
-});
+  ({
+    categories: categoriesSelector(state),
+  });
 
 export default connect(mapStateToProps, {loadRecipes, setActiveRecipe})(RecipeList);

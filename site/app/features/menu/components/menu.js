@@ -12,7 +12,7 @@ export default () => (
       <li>|</li>
       <li><Link to="/kitchen">Kitchen</Link></li>
       <li>|</li>
-      <li><Link to="/talks">Talks</Link></li>
+      <li><Link to="/stage">Stage</Link></li>
     </ul>
     <hr />
   </nav>

@@ -26,9 +26,9 @@ const detail = ({page, recipe}) => {
 };
 
 const mapStateToProps = (state, props) =>
-({
-  recipe: activeRecipeSelector(state),
-  page: pageSelector(state, props),
-});
+  ({
+    recipe: activeRecipeSelector(state),
+    page: pageSelector(state, props),
+  });
 
 export default connect(mapStateToProps)(detail);

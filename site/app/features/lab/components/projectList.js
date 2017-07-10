@@ -31,8 +31,8 @@ class ProjectList extends Component {
 }
 
 const mapStateToProps = state =>
-({
-  projects: projectIdsAndTitlesSelector(state),
-});
+  ({
+    projects: projectIdsAndTitlesSelector(state),
+  });
 
 export default connect(mapStateToProps, {loadProjects, setActiveProject})(ProjectList);

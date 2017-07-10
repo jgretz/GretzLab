@@ -27,9 +27,9 @@ const detail = ({page, project}) => {
 };
 
 const mapStateToProps = (state, props) =>
-({
-  project: activeProjectSelector(state),
-  page: pageSelector(state, props),
-});
+  ({
+    project: activeProjectSelector(state),
+    page: pageSelector(state, props),
+  });
 
 export default connect(mapStateToProps)(detail);

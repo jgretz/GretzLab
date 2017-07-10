@@ -62,8 +62,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state =>
-({
-  pages: allPagesSelector(state),
-});
+  ({
+    pages: allPagesSelector(state),
+  });
 
 export default connect(mapStateToProps, {loadPages})(App);
