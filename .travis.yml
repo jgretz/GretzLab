@@ -1,8 +1,10 @@
 language: node_js
 node_js:
   - "node"
-script:
+after_success:
   - yarn build
+before_deploy:
+  - cd lib
 deploy:
   provider: heroku
   api_key:
