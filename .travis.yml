@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "node"
 after_success:
-  - yarn build
+  - yarn build && cd ./lib
 deploy:
   provider: heroku
   api_key:
