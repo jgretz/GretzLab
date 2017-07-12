@@ -1,8 +1,4 @@
-import {List} from 'immutable';
-import {promiseReducer} from 'truefit-react-utils';
+import {PROJECT} from '../../constants';
+import {makeDataReducer} from '../../shared/services';
 
-import {LOAD_PROJECTS} from '../actions';
-
-export default promiseReducer(LOAD_PROJECTS, List([]), {
-  FULFILLED: (state, payload) => List(payload.data),
-});
+export default makeDataReducer(PROJECT);

@@ -1,6 +1,16 @@
 import React from 'react';
-import {Well} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
+
+import EntryList from './entryList';
+import EntryDetail from './detail';
 
 export default () => (
-  <Well>Coming Soon</Well>
+  <Row>
+    <Col xs={2}>
+      <EntryList />
+    </Col>
+    <Col xs={10}>
+      <EntryDetail />
+    </Col>
+  </Row>
 );

@@ -1,8 +1,4 @@
-import {get} from 'truefit-react-utils';
+import {TALK} from '../../constants';
+import {makeLoadAction} from '../../shared/services';
 
-export const LOAD_TALKS = 'LOAD_TALKS';
-export const loadTalks = () =>
-  ({
-    type: LOAD_TALKS,
-    payload: get('talk?expand=tags,conferences'),
-  });
+export const loadTalks = () => makeLoadAction(TALK, 'talk', ['conferences']);

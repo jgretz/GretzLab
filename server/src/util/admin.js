@@ -13,6 +13,7 @@ export default [
   {
     model: 'blog',
     map: {
+      text: {type: RICH_TEXT},
       tags: {
         type: LIST,
         source: {

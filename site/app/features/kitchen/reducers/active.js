@@ -1,6 +1,4 @@
-import {stateReducer} from 'truefit-react-utils';
-import {SET_ACTIVE_RECIPE} from '../actions';
+import {RECIPE} from '../../constants';
+import {makeActiveReducer} from '../../shared/services';
 
-export default stateReducer(null, {
-  [SET_ACTIVE_RECIPE]: (state, payload) => payload,
-});
+export default makeActiveReducer(RECIPE);

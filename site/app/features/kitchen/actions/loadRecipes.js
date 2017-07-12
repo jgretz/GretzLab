@@ -1,8 +1,4 @@
-import {get} from 'truefit-react-utils';
+import {RECIPE} from '../../constants';
+import {makeLoadAction} from '../../shared/services';
 
-export const LOAD_RECIPES = 'LOAD_RECIPES';
-export const loadRecipes = () =>
-  ({
-    type: LOAD_RECIPES,
-    payload: get('recipe?expand=tag,category'),
-  });
+export const loadRecipes = () => makeLoadAction(RECIPE, 'recipe', ['category']);

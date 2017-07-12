@@ -1,8 +1,4 @@
-import {get} from 'truefit-react-utils';
+import {PROJECT} from '../../constants';
+import {makeLoadAction} from '../../shared/services';
 
-export const LOAD_PROJECTS = 'LOAD_PROJECTS';
-export const loadProjects = () =>
-  ({
-    type: LOAD_PROJECTS,
-    payload: get('project?expand=tags'),
-  });
+export const loadProjects = () => makeLoadAction(PROJECT, 'project');

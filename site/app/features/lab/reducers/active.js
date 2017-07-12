@@ -1,6 +1,4 @@
-import {stateReducer} from 'truefit-react-utils';
-import {SET_ACTIVE_PROJECT} from '../actions';
+import {PROJECT} from '../../constants';
+import {makeActiveReducer} from '../../shared/services';
 
-export default stateReducer(null, {
-  [SET_ACTIVE_PROJECT]: (state, payload) => payload,
-});
+export default makeActiveReducer(PROJECT);
