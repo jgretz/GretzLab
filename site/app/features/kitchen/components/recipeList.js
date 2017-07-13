@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import autobind from 'class-autobind';
 
-import {loadRecipes, setActiveRecipe} from '../actions';
+import {loadRecipes} from '../actions';
 import {categoriesSelector} from '../selectors';
 
 import {List} from '../../shared/components';
@@ -17,15 +17,11 @@ class RecipeList extends Component {
     this.props.loadRecipes();
   }
 
-  handleClick(recipe) {
-    this.props.setActiveRecipe(recipe.id);
-  }
-
   renderCategory(category) {
     return (
       <div key={category.id}>
         <h1>{category.name}</h1>
-        <List data={category.recipes} onClick={this.handleClick} className=" " />
+        <List data={category.recipes} className=" " />
       </div>
     );
   }
@@ -45,4 +41,4 @@ const mapStateToProps = state =>
     categories: categoriesSelector(state),
   });
 
-export default connect(mapStateToProps, {loadRecipes, setActiveRecipe})(RecipeList);
+export default connect(mapStateToProps, {loadRecipes})(RecipeList);

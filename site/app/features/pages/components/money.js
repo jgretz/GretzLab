@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {pageSelector} from '../selectors';
+import {activePageSelector} from '../selectors';
 
 import Watermark from './watermark';
 import Social from './social';
@@ -20,9 +20,9 @@ const money = ({page}) => {
   );
 };
 
-const mapStateToProps = (state, props) =>
+const mapStateToProps = state =>
   ({
-    page: pageSelector(state, props),
+    page: activePageSelector(state),
   });
 
 export default connect(mapStateToProps)(money);

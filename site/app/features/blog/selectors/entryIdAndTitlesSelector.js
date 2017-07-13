@@ -4,6 +4,7 @@ import allEntriesSelector from './allEntriesSelector';
 export default createSelector(allEntriesSelector,
   entries => entries
     .map(e => ({id: e.id, title: e.title}))
-    .sortBy(e => e.title)
+    .sortBy(e => e.createdAt)
+    .reverse()
     .toJS()
 );

@@ -9,31 +9,31 @@ import {Menu} from './features/menu/components';
 
 import {allPagesSelector} from './features/pages/selectors';
 
+import {setActiveLocation} from './features/shared/actions';
+
 class App extends Component {
   constructor(props) {
     super(props);
     autobind(this);
+
+    this.setActiveLocation(props.location);
   }
 
   componentWillMount() {
     this.props.loadPages();
   }
 
-  findName() {
-    let {location: {pathname}} = this.props;
-    pathname = pathname.replace('/', '');
-
-    if (!pathname || pathname.length === 0 || pathname === '#') {
-      return 'home';
+  componentWillReceiveProps(newProps) {
+    if (newProps.location !== this.props.location) {
+      this.setActiveLocation(newProps.location);
     }
-
-    return pathname;
   }
 
-  renderChildren(name) {
-    return React.Children.map(this.props.children, child => React.cloneElement(child, {name}));
+  setActiveLocation(location) {
+    this.props.setActiveLocation(location);
   }
 
+  // render
   renderLoading() {
     return (
       <div className="loading">
@@ -49,13 +49,12 @@ class App extends Component {
     }
 
     // render page
-    const name = this.findName();
     return (
       <div className="site">
-        <Money name={name} />
+        <Money />
         <Menu />
 
-        {this.renderChildren(name)}
+        {this.props.children}
       </div>
     );
   }
@@ -66,4 +65,4 @@ const mapStateToProps = state =>
     pages: allPagesSelector(state),
   });
 
-export default connect(mapStateToProps, {loadPages})(App);
+export default connect(mapStateToProps, {loadPages, setActiveLocation})(App);

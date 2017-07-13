@@ -1,9 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {browserHistory} from 'react-router';
 
-export default ({data, onClick, className}) => {
-  const handleClick = item => () => onClick(item);
+import {activeLocationSelector} from '../selectors';
+import {replaceAll} from '../../shared/services';
+
+const list = ({data, className, location}) => {
+  const handleClick = item => () => {
+    browserHistory.push(`/${location.page}/${replaceAll(item.title, ' ', '-')}`);
+  };
+
   const actualClassName = className || 'content-list';
-
   return (
     <div className={actualClassName}>
       <ul>
@@ -18,3 +25,10 @@ export default ({data, onClick, className}) => {
     </div>
   );
 };
+
+const mapStateToProps = state =>
+  ({
+    location: activeLocationSelector(state),
+  });
+
+export default connect(mapStateToProps)(list);

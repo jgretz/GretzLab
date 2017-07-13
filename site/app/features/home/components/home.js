@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Row, Col} from 'react-bootstrap';
 
-import {pageSelector} from '../../pages/selectors';
+import {activePageSelector} from '../../pages/selectors';
 
 const home = ({page}) => {
   if (!page) {
@@ -19,9 +19,9 @@ const home = ({page}) => {
   );
 };
 
-const mapStateToProps = (state, props) =>
+const mapStateToProps = state =>
   ({
-    page: pageSelector(state, props),
+    page: activePageSelector(state),
   });
 
 export default connect(mapStateToProps)(home);

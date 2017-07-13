@@ -1,6 +1,4 @@
-import {createSelector} from 'reselect';
 import allRecipesSelector from './allRecipesSelector';
-import activeRecipeIdSelector from './activeRecipeIdSelector';
+import {makeActiveItemSelector} from '../../shared/services';
 
-export default createSelector(allRecipesSelector, activeRecipeIdSelector,
-  (recipes, id) => recipes.find(r => r.id === id));
+export default makeActiveItemSelector(allRecipesSelector);

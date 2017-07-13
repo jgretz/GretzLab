@@ -12,10 +12,19 @@ import {NotFound} from './features/shared/components';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
+
     <Route path="/lab" component={Lab} />
+    <Route path="/lab/:title" component={Lab} />
+
     <Route path="/kitchen" component={Kitchen} />
+    <Route path="/kitchen/:title" component={Kitchen} />
+
     <Route path="/stage" component={Stage} />
+    <Route path="/stage/:title" component={Stage} />
+
     <Route path="/blog" component={Blog} />
+    <Route path="/blog/:title" component={Blog} />
+
     <Route path="*" component={NotFound} />
   </Route>
 );
