@@ -23,7 +23,7 @@
     "node-bits": "^0.0.30",
     "node-bits-admin": "^0.0.23",
     "node-bits-code": "^0.0.24",
-    "node-bits-express": "^0.0.20",
+    "node-bits-express": "^0.0.21",
     "node-bits-jwt": "^0.0.21",
     "node-bits-password": "^0.0.9",
     "node-bits-rest": "^0.0.29",

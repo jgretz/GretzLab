@@ -1,5 +1,5 @@
 import nodeBits from 'node-bits';
-import nodeBitsExpress, {cors, bodyParser, accessControl, fileUpload} from 'node-bits-express';
+import nodeBitsExpress, {cors, bodyParser, accessControl, fileUpload, compression} from 'node-bits-express';
 import nodeBitsCode from 'node-bits-code';
 import nodeBitsRest from 'node-bits-rest';
 import nodeBitsSpa from 'node-bits-spa';
@@ -21,6 +21,7 @@ nodeBits([
       cors(),
       bodyParser(),
       fileUpload(),
+      compression(),
     ],
     hooks: [
       nodeBitsJwt({
