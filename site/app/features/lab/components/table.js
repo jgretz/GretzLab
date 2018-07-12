@@ -17,10 +17,10 @@ const Table = ({projects}) => (
   <div className="table">
     <Trail
       from={{x: 100}}
-      to={{x: -5}} // Trail and the bounce easing have some issues, this evens them out
+      to={{x: 0}}
       delay={250}
       impl={TimingAnimation}
-      config={{duration: 500, easing: Easing.bounce}}
+      config={{duration: 500, easing: Easing.elastic(2)}}
       keys={projects.map((p, i) => p.name || i)}
     >
       {projects.map((p, i) => ({x}) => (
