@@ -19,19 +19,20 @@ export default args => {
       fs.readdir(directoryPath, (err2, files) => {
         if (err2) throw err2;
 
-        files.sort();
-
         // check if we need to skip this directory
         if (_.find(files, file => path.basename(file) === '.no-autogenerate')) {
           return;
         }
 
+        files.sort();
         let indexContents = '';
         for (const file of files) {
           if (!/^.+\.js$/.test(file) || /^index\.js$/.test(file)) continue;
 
           const fileName = path.basename(file, '.js');
-          indexContents += `export ${formatInput(fileName)} from './${fileName}';\n`;
+          indexContents += `export ${formatInput(
+            fileName,
+          )} from './${fileName}';\n`;
         }
 
         const indexFilePath = path.join(directoryPath, 'index.js');

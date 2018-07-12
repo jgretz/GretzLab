@@ -1,56 +1,24 @@
 import autoprefixer from 'autoprefixer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
-import {
-  EnvironmentPlugin,
-  NamedModulesPlugin,
-  HotModuleReplacementPlugin,
-  NoEmitOnErrorsPlugin,
-  SourceMapDevToolPlugin,
-  optimize,
-} from 'webpack';
-
-const {CommonsChunkPlugin} = optimize;
+import {EnvironmentPlugin, HotModuleReplacementPlugin} from 'webpack';
 
 export default {
-  resolve: {
-    extensions: ['.js'],
-    alias: {
-      configs: path.resolve(__dirname, 'configs', 'local.js'),
-    },
+  mode: 'development',
+  entry: {
+    main: [
+      'babel-polyfill',
+      'webpack-hot-middleware/client?reload=true',
+      './app/index.js',
+    ],
   },
-  entry: [
-    './app/webpack-public-path.js',
-    'webpack-hot-middleware/client?reload=true',
-    './app/index.js',
-  ],
   output: {
-    path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].js',
   },
+  devtool: 'eval-source-map',
   plugins: [
-    new EnvironmentPlugin({NODE_ENV: 'development'}),
-    new CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks(module) {
-        return (module.context && /node_modules/.test(module.context)) ||
-          (module.resource && /babelHelpers\.js/.test(module.resource));
-      },
-    }),
-    new CommonsChunkPlugin({name: 'manifest'}),
-    new NamedModulesPlugin(),
+    new EnvironmentPlugin({API_BASE_URL: 'http://localhost:4005/api/'}),
     new HotModuleReplacementPlugin(),
-    new NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({
-      template: 'app/index.ejs',
-      inject: true,
-    }),
-    new SourceMapDevToolPlugin({
-      test: /main\.js/,
-      filename: '[file].map',
-      columns: false,
-    }),
+    new HtmlWebpackPlugin({template: 'app/index.ejs'}),
   ],
   module: {
     rules: [
@@ -61,16 +29,19 @@ export default {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['env', {
-                targets: {
-                  browsers: ['last 2 versions', 'not ie < 11'],
+              [
+                'env',
+                {
+                  modules: false,
+                  forceAllTransforms: true,
                 },
-                modules: false,
-              }],
+              ],
               'react',
-              'react-hmre',
             ],
             plugins: [
+              'transform-decorators-legacy',
+              'react-hot-loader/babel',
+              'syntax-dynamic-import',
               'transform-object-rest-spread',
               'external-helpers',
             ],
@@ -78,18 +49,41 @@ export default {
         },
       },
       {
-        test: /(\.css|\.scss)$/,
+        test: /\.scss$/,
         use: [
           'style-loader',
-          'css-loader?sourceMap',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 2,
+            },
+          },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [autoprefixer],
+              sourceMap: true,
+              plugins: [autoprefixer],
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
               sourceMap: true,
             },
           },
-          'sass-loader?sourceMap',
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
         ],
       },
       {
@@ -102,6 +96,10 @@ export default {
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        use: ['file-loader'],
+      },
+      {
+        test: /\.otf(\?v=\d+\.\d+\.\d+)?$/,
         use: ['file-loader'],
       },
       {

@@ -3,9 +3,7 @@ import generateIndexFiles from './generateIndexFile';
 
 generateIndexFiles({
   searchPath: '../app/features',
-  includeTests: [
-    /features(?:\/|\\).+?(?:\/|\\)components$/,
-  ],
+  includeTests: [/features(?:\/|\\).+?(?:\/|\\)components$/],
   excludeTests: [
     /features(?:\/|\\).+?(?:\/|\\)styles/,
     /features(?:\/|\\).+?(?:\/|\\)reducers(\/|\\)components$/,

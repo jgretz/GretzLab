@@ -1,32 +1,18 @@
 import './styles/styles.scss';
-
 import './babelHelpers';
-import 'core-js/es6/symbol';
-import 'core-js/es6/promise';
-import 'core-js/es6/array';
-import 'core-js/es6/number';
-import 'core-js/es6/object';
 
 import React from 'react';
-import {Provider} from 'react-redux';
-import {browserHistory, Router} from 'react-router';
 import {render} from 'react-dom';
-import {syncHistoryWithStore} from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 
-import {configureHttp} from './util';
-import configureStore from './store/configureStore';
-import routes from './routes';
+import Root from './Root';
+import {configureStore, configureHttp} from './util';
 
 // configure stuff
-const store = configureStore();
+const history = createHistory();
+const store = configureStore(history);
+
 configureHttp(store);
 
-const history = syncHistoryWithStore(browserHistory, store);
-
-// render
-render(
-  <Provider store={store}>
-    <Router history={history} routes={routes} />
-  </Provider>,
-  document.getElementById('app')
-);
+// load it into the page
+render(<Root store={store} history={history} />, document.getElementById('app'));

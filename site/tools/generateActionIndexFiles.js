@@ -2,8 +2,6 @@ import generateIndexFiles from './generateIndexFile';
 
 generateIndexFiles({
   searchPath: '../app/features',
-  includeTests: [
-    /features(?:\/|\\).+?(?:\/|\\)actions/,
-  ],
+  includeTests: [/features(?:\/|\\).+?(?:\/|\\)actions/],
   formatInput: () => '*',
 });

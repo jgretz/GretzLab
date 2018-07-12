@@ -19,28 +19,10 @@ browserSync({
 
       webpackDevMiddleware(bundler, {
         publicPath: config.output.publicPath,
-
-        stats: {
-          assets: false,
-          cached: false,
-          children: false,
-          chunkModules: false,
-          chunkOrigins: false,
-          chunks: false,
-          colors: true,
-          errorDetails: false,
-          hash: false,
-          modules: false,
-          reasons: false,
-          source: false,
-          timings: false,
-          version: false,
-        },
+        stats: 'errors-only',
       }),
 
       webpackHotMiddleware(bundler),
     ],
   },
-
-  files: ['src/*.html'],
 });

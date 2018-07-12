@@ -1,32 +1,6 @@
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-$fa-font-path: '~font-awesome/fonts/';
-
-@import '~bootstrap-sass/assets/stylesheets/_bootstrap';
-@import '~font-awesome/scss/font-awesome';
-
-@import './colors';
 @import './fonts';
-
+@import './colors';
 @import './global';
 
-@import '../features/pages/styles/style';
-@import '../features/menu/styles/style';
-@import '../features/shared/styles/style';
-
-.site {
-  background-color: $white;
-}
-
-.loading {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-
-  height: 100%;
-  width: 100%;
-
-  .sk-spinner {
-    height: 100px;
-    width: 100px;
-  }
-}
+@import '../features/header/styles/index';
+@import '../features/lab/styles/index';

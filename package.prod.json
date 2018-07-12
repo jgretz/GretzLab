@@ -1,34 +1,17 @@
 {
-  "name": "gretzlab",
+  "name": "schwankiecom",
   "version": "0.0.1",
   "description": "",
   "scripts": {
     "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jgretz/gretzlab.git"
-  },
   "author": "Josh Gretz",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jgretz/gretzlab/issues"
-  },
-  "homepage": "http://www.gretzlab.com/",
   "dependencies": {
-    "express": "^4.15.3",
-    "node-bits": "^0.0.30",
-    "node-bits-admin": "^0.0.23",
-    "node-bits-code": "^0.0.24",
+    "compression": "^1.7.2",
+    "node-bits": "^0.0.34",
+    "node-bits-code": "^0.0.25",
     "node-bits-express": "^0.0.21",
-    "node-bits-jwt": "^0.0.21",
-    "node-bits-password": "^0.0.9",
-    "node-bits-rest": "^0.0.29",
-    "node-bits-spa": "^0.0.7",
-    "node-bits-sql": "^0.0.57",
-    "pg": "^6.4.0",
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^4.3.0",
-    "sitemap": "^1.13.0"
+    "node-bits-spa": "^0.0.8"
   }
 }

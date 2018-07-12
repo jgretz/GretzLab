@@ -1,1 +1,1 @@
-export {default as activeLocationSelector} from './activeLocationSelector';
+export {default as activeRouteSelector} from './activeRouteSelector';

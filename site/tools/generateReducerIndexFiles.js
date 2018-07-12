@@ -19,13 +19,21 @@ dir.subdirs(path.resolve(__dirname, searchPath), (err1, directoryPaths) => {
         return;
       }
 
-      const jsFiles = _.filter(files, file => /^.+\.js$/.test(file) && !/^index\.js$/.test(file));
+      const jsFiles = _.filter(
+        files,
+        file => /^.+\.js$/.test(file) && !/^index\.js$/.test(file),
+      );
       jsFiles.sort();
 
       const indexReducerContents = [
         '/* eslint-disable sort-imports */',
-        'import {combineReducers} from \'redux\';',
-        ...jsFiles.map(file => `import ${path.basename(file, '.js')} from './${path.basename(file)}';`),
+        "import {combineReducers} from 'redux';",
+        ...jsFiles.map(
+          file =>
+            `import ${path.basename(file, '.js')} from './${path.basename(
+              file,
+            )}';`,
+        ),
 
         '\nexport default combineReducers({',
         ...jsFiles.map(file => `  ${path.basename(file, '.js')},`),

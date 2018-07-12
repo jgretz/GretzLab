@@ -1,4 +1,4 @@
-import {PROJECT} from '../../constants';
-import {makeDataReducer} from '../../shared/services';
+import {stateReducer} from 'truefit-react-utils';
+import {Projects} from '../data';
 
-export default makeDataReducer(PROJECT);
+export default stateReducer(Projects, {});

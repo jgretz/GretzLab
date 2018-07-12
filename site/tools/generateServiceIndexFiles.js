@@ -2,8 +2,6 @@ import generateIndexFiles from './generateIndexFile';
 
 generateIndexFiles({
   searchPath: '../app/features',
-  includeTests: [
-    /features(?:\/|\\).+?(?:\/|\\)services$/,
-  ],
+  includeTests: [/features(?:\/|\\).+?(?:\/|\\)services$/],
   formatInput: fileName => `{default as ${fileName}}`,
 });
