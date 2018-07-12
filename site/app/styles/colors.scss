@@ -1,13 +1,43 @@
 /* Named Colors */
 $black: #000;
 $white: #f2f3f4;
+$gray: #cccccc;
 $red: #d9534f;
 
-$foreground: #fed4ca;
 $background: #fff;
-$accent: #fba025;
-$accent2: #0093b5;
-$accent3: #ff1604;
-$accent4: #0c4897;
+
+$accent1: #aa7b39;
+$accent2: #4a2d73;
+$accent3: #553200;
+$accent4: #2a4e6e;
+$accent5: #aa9f39;
+$accent6: #041f37;
+$accent7: #1b053a;
+$accent8: #554d00;
 
 $error: $red;
+
+.color-1 {
+  background-color: $accent1;
+}
+.color-2 {
+  background-color: $accent2;
+}
+.color-3 {
+  background-color: $accent3;
+}
+.color-4 {
+  background-color: $accent4;
+}
+.color-5 {
+  background-color: $accent5;
+}
+.color-6 {
+  background-color: $accent6;
+}
+.color-7 {
+  background-color: $accent7;
+}
+.color-8 {
+  background-color: $accent8;
+}
