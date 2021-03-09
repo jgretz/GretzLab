@@ -1,10 +1,10 @@
 language: node_js
 node_js:
-- node
+  - node
 after_success:
-- yarn build
+  - yarn build
 before_deploy:
-- cd ./lib
+  - cd ./lib
 deploy:
   provider: heroku
   api_key:
@@ -12,5 +12,5 @@ deploy:
   app: gretzlab
   skip_cleanup: true
   on:
-    branch: master
+    branch: main
     repo: jgretz/GretzLab
